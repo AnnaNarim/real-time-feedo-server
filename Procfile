@@ -1,1 +1,1 @@
-web: nodemon -e js,graphql -x node -r dotenv/config src/index.js
+web: node -e js,graphql -x node -r dotenv/config src/index.js
