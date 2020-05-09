@@ -1,0 +1,42 @@
+type Post {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  published : Boolean! @default(value: false)
+  anonymous : Boolean! @default(value: true)
+  title: String!
+  content: String!
+  answerType: String!
+  author: User!
+  fields :[Field!]!
+  classes: [Class!]
+}
+
+type User {
+  id: ID! @id
+  email: String! @unique
+  password: String!
+  name: String!
+  posts: [Post!]!
+}
+
+type Field {
+  id: ID! @id
+  label: String!,
+  type: String!,
+  post: Post!
+}
+
+type Class {
+  id: ID! @id
+  name: String!
+  post: Post!
+  published: Boolean! @default(value: true)
+  answers: [Answer!]
+}
+
+type Answer {
+  id: ID! @id
+  value: String!
+  class: Class!
+}
