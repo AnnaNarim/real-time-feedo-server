@@ -28,6 +28,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `${process.env["PRISMA_ENDPOINT"]}`
+  endpoint: `https://real-time-feedo-881c916ca7.herokuapp.com`
 });
 exports.prisma = new exports.Prisma();
