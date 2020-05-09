@@ -1,5 +1,5 @@
 # Specifies the HTTP endpoint of your Prisma API (deployed to a Prisma Demo server).
-endpoint: https://real-time-feedo-881c916ca7.herokuapp.com
+endpoint: https://real-time-feedo-881c916ca7.herokuapp.com/default/default
 
 # Defines your models, each model is mapped to the database as a table.
 datamodel: datamodel.prisma
