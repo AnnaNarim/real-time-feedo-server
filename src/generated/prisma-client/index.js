@@ -5,11 +5,11 @@ var typeDefs = require("./prisma-schema").typeDefs;
 
 var models = [
   {
-    name: "Answer",
+    name: "Post",
     embedded: false
   },
   {
-    name: "Class",
+    name: "User",
     embedded: false
   },
   {
@@ -17,11 +17,15 @@ var models = [
     embedded: false
   },
   {
-    name: "Post",
+    name: "Class",
     embedded: false
   },
   {
-    name: "User",
+    name: "Attendee",
+    embedded: false
+  },
+  {
+    name: "Answer",
     embedded: false
   }
 ];
@@ -31,25 +35,3 @@ exports.Prisma = prisma_lib_1.makePrismaClientClass({
   endpoint: `https://real-time-feedo-881c916ca7.herokuapp.com/default/default`
 });
 exports.prisma = new exports.Prisma();
-var models = [
-  {
-    name: "Answer",
-    embedded: false
-  },
-  {
-    name: "Class",
-    embedded: false
-  },
-  {
-    name: "Field",
-    embedded: false
-  },
-  {
-    name: "Post",
-    embedded: false
-  },
-  {
-    name: "User",
-    embedded: false
-  }
-];

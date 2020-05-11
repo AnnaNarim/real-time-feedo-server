@@ -7,6 +7,7 @@ type Query {
   classes: [Class!]
   fields: [Field!]!
   answers: [Answer!]
+  relativeClassAnswers (classId :ID!):[Answer!]
 }
 
 type Mutation {
@@ -22,11 +23,13 @@ type Mutation {
   publishClass(id: ID!, published: Boolean!): Class!
   deleteClass(id: ID!): Class!
 
-  createAnswer(value: String!, classId: ID!): Answer!
+  createAttendee(name: String, answers:[inputAnswer!], classId : ID!): Answer!
 }
 
 type Subscription {
   feedSubscription: Post
+  classSubscription: Class
+  attendeeSubscription (classId: ID!): Class
 }
 
 type AuthPayload {
@@ -58,10 +61,22 @@ input inputField{
   type:String!
 }
 
+input inputAnswer{
+  value:String!
+  field: inputAnswerField!
+}
+
+input inputAnswerField{
+  id : ID!
+}
+
 type Field {
-  id:ID!
-  label:String!,
-  type:String!,
+  id: ID!
+  label: String!
+  type: String!
+  post: Post!
+  answers: [Answer!]
+  relativeClassAnswers (classId :ID!):[Answer!]
 }
 
 type Class {
@@ -69,11 +84,20 @@ type Class {
   name: String!
   post: Post!
   published: Boolean!
+  attendees : [Attendee!]
+}
+
+type Attendee{
+  id: ID!
+  name: String
   answers: [Answer!]
+  class:Class
+  createdAt : String!
 }
 
 type Answer {
   id: ID!
   value: String!
-  class: Class!
+  author : Attendee!
+  field : Field
 }
