@@ -20,6 +20,14 @@ const server = new GraphQLServer({
   },
 })
 
+const options = {
+	port: process.env.PORT || 4000,
+	subscriptions: subscribe
+}
+
+server.start(options, ({ port }) => console.log(`Server is running on http://localhost:${port}`));
+
+
 // const websocketServer = createServer((request, response) => {
 //   response.writeHead(404);
 //   response.end();
@@ -42,9 +50,3 @@ const server = new GraphQLServer({
 //   },
 // );
 
-const options = {
-	port: process.env.PORT || 4000,
-	subscriptions: subscribe
-}
-
-server.start(options, ({ port }) => console.log(`Server is running on http://localhost:${port}`));
